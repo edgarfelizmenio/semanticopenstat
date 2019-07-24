@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#"
+     xml:base="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-9="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#amount -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#amount">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#relational_property"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#amount"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Measurement"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_country -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_country">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#relational_property"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_country"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Region"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_country"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Country"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_province -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_province">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#relational_property"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_province"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#City"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_region"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Province"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_region -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_region">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#relational_property"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_region"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Province"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_region"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Region"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#measured -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#measured">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#relational_property"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_province"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#City"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_province"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Country"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_province"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Province"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#in_province"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Region"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#measured"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Measurement"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#modifier_property -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#modifier_property"/>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#relational_property -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#relational_property"/>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#year -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#year">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#relational_property"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#year"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Measurement"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#City -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#City">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Independent_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Country -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Country">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Independent_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Crop -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Crop">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Independent_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Domain_entity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Domain_entity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Independent_entity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Independent_entity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Domain_entity"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Value"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Measurement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Measurement">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Independent_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Province -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Province">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Independent_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Region -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Region">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Independent_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Value -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Value">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Domain_entity"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#CAR -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#CAR"/>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#OWLNamedIndividual_202b9e9b_7a34_478d_9cdc_e48d30d38162 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#OWLNamedIndividual_202b9e9b_7a34_478d_9cdc_e48d30d38162">
+        <rdf:type rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Country"/>
+        <rdfs:label xml:lang="en">Philippines</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_I -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_I"/>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_II -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_II"/>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_III -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_III"/>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_IV-A -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_IV-A"/>
+    
+
+
+    <!-- http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_IV-B -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#Region_IV-B">
+        <rdf:type rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Region"/>
+        <untitled-ontology-9:in_country rdf:resource="http://www.semanticweb.org/edgar/ontologies/2019/6/crops_area_planted_harvested#OWLNamedIndividual_202b9e9b_7a34_478d_9cdc_e48d30d38162"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#City"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Country"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Crop"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Measurement"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Province"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/edgar/ontologies/2019/6/untitled-ontology-9#Region"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

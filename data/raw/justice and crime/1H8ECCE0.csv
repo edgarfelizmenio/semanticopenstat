@@ -1,0 +1,57 @@
+"Reported Index and Non-Index Crimes by Year, Region, Type of Crime and Parameter"
+
+"Year","Region","Index Crimes Total","Index Crimes Cleared","Index Crimes Crime Clearance Efficiency (%)","Non-Index Crimes Total","Non-Index Crimes Cleared","Non-Index Crimes Crime Clearance Efficiency (%)","Total Crimes Total","Total Crimes Cleared","Total Crimes Crime Clearance Efficiency (%)"
+"2014","PHILIPPINES",259990,104065,40.03,454642,296913,65.31,714632,400978,56.11
+"2014","..National Capital Region (NCR)",50372,23409,46.47,100495,92623,92.17,150867,116032,76.91
+"2014","..Cordillera Administrative Region (CAR)",8940,5692,63.67,11783,9903,84.04,20723,15595,75.25
+"2014","..Region I (Ilocos Region)",10985,5977,54.41,24825,19106,76.96,35810,25083,70.04
+"2014","..Region II (Cagayan Valley)",4571,2372,51.89,10471,6835,65.28,15042,9207,61.21
+"2014","..Region III (Central Luzon)",20169,7511,37.24,38329,24166,63.05,58498,31677,54.15
+"2014","..Region IV-A (CALABARZON)",15705,7405,47.15,28920,16844,58.24,44625,24249,54.34
+"2014","..MIMAROPA Region",3940,1767,44.85,5940,2444,41.14,9880,4211,42.62
+"2014","..Region V (Bicol Region)",15705,7458,47.49,31808,23521,73.95,47513,30979,65.20
+"2014","..RegionVI (Western Visayas)",24748,10101,40.82,49971,22710,45.45,74719,32811,43.91
+"2014","..Region VII (Central Visayas)",24399,7628,31.26,36249,24240,66.87,60648,31868,52.55
+"2014","..Region VIII  Eastern Visayas",10398,2997,28.82,13803,5717,41.42,24201,8714,36.01
+"2014","..Region IX (Zamboanga Peninsula)",11946,2541,21.27,20551,6948,33.81,32497,9489,29.20
+"2014","..Region X (Northern Mindanao)",20259,5218,25.76,27123,8763,32.31,47382,13981,29.51
+"2014","..Region XI (Davao Region)",15710,5740,36.54,23708,15600,65.80,39418,21340,54.14
+"2014","..Region XII (SOCCSKSARGEN)",13432,5362,39.92,18241,11711,64.20,31673,17073,53.90
+"2014","..Region XIII (Caraga)",6638,2418,36.43,10165,4916,48.36,16803,7334,43.65
+"2014","..Autonomous Region in Muslim Mindanao (ARMM)",2073,469,22.62,2260,866,38.32,4333,1335,30.81
+"2015","PHILIPPINES",201010,..,..,474803,..,..,675813,..,..
+"2015","..National Capital Region (NCR)",31900,..,..,120468,..,..,152368,..,..
+"2015","..Cordillera Administrative Region (CAR)",7816,..,..,11793,..,..,19609,..,..
+"2015","..Region I (Ilocos Region)",9426,..,..,31003,..,..,40429,..,..
+"2015","..Region II (Cagayan Valley)",3309,..,..,9786,..,..,13095,..,..
+"2015","..Region III (Central Luzon)",14502,..,..,42722,..,..,57224,..,..
+"2015","..Region IV-A (CALABARZON)",15074,..,..,31774,..,..,46848,..,..
+"2015","..MIMAROPA Region",3187,..,..,5199,..,..,8386,..,..
+"2015","..Region V (Bicol Region)",11651,..,..,30369,..,..,42020,..,..
+"2015","..RegionVI (Western Visayas)",18958,..,..,43073,..,..,62031,..,..
+"2015","..Region VII (Central Visayas)",22438,..,..,41999,..,..,64437,..,..
+"2015","..Region VIII  Eastern Visayas",7876,..,..,13228,..,..,21104,..,..
+"2015","..Region IX (Zamboanga Peninsula)",8998,..,..,16945,..,..,25943,..,..
+"2015","..Region X (Northern Mindanao)",14447,..,..,21695,..,..,36142,..,..
+"2015","..Region XI (Davao Region)",11107,..,..,22779,..,..,33886,..,..
+"2015","..Region XII (SOCCSKSARGEN)",12999,..,..,20718,..,..,33717,..,..
+"2015","..Region XIII (Caraga)",5194,..,..,9137,..,..,14331,..,..
+"2015","..Autonomous Region in Muslim Mindanao (ARMM)",2128,..,..,2115,..,..,4243,..,..
+"2016","PHILIPPINES",139459,..,..,445274,..,..,584733,..,..
+"2016","..National Capital Region (NCR)",..,..,..,..,..,..,..,..,..
+"2016","..Cordillera Administrative Region (CAR)",..,..,..,..,..,..,..,..,..
+"2016","..Region I (Ilocos Region)",..,..,..,..,..,..,..,..,..
+"2016","..Region II (Cagayan Valley)",..,..,..,..,..,..,..,..,..
+"2016","..Region III (Central Luzon)",..,..,..,..,..,..,..,..,..
+"2016","..Region IV-A (CALABARZON)",..,..,..,..,..,..,..,..,..
+"2016","..MIMAROPA Region",..,..,..,..,..,..,..,..,..
+"2016","..Region V (Bicol Region)",..,..,..,..,..,..,..,..,..
+"2016","..RegionVI (Western Visayas)",..,..,..,..,..,..,..,..,..
+"2016","..Region VII (Central Visayas)",..,..,..,..,..,..,..,..,..
+"2016","..Region VIII  Eastern Visayas",..,..,..,..,..,..,..,..,..
+"2016","..Region IX (Zamboanga Peninsula)",..,..,..,..,..,..,..,..,..
+"2016","..Region X (Northern Mindanao)",..,..,..,..,..,..,..,..,..
+"2016","..Region XI (Davao Region)",..,..,..,..,..,..,..,..,..
+"2016","..Region XII (SOCCSKSARGEN)",..,..,..,..,..,..,..,..,..
+"2016","..Region XIII (Caraga)",..,..,..,..,..,..,..,..,..
+"2016","..Autonomous Region in Muslim Mindanao (ARMM)",..,..,..,..,..,..,..,..,..

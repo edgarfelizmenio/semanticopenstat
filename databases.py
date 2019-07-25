@@ -32,6 +32,10 @@ DOMAINS = {
             "file_key": "2E4ENVCP",
             "title": "Palay and Corn: Volume of Production",
             "parser": "_2E4ENVCP"
+        }, {
+            "file_key": "2E4ENAHC",
+            "title": "Palay and Corn: Area Harvested by Crop and Year by Crop and Year",
+            "parser": "_2E4ENAHC"
         }]
     },
 }

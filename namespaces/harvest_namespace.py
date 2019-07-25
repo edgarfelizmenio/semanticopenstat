@@ -17,7 +17,8 @@ harvestYear = harvestNS['harvest_year']
 harvest_schema_triples = [
     # class declarations
     (harvestClass, rdfType, owlClass),
-    
+    (harvestClass, rdfsSubClassOf, objectClass),
+
     (hasHarvest, rdfType, owlObjectProperty),
     (hasHarvest, rdfsDomain, placeClass),
     (hasHarvest, rdfsRange, harvestClass),

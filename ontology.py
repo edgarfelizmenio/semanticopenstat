@@ -2,7 +2,7 @@
 import pprint
 from rdflib import ConjunctiveGraph
 
-from namespaces import common_namespace, crop_namespace, place_namespace, harvest_namespace
+from namespaces import common_namespace, crop_namespace, place_namespace, harvest_namespace, production_namespace
 
 import rdf_common
 
@@ -11,6 +11,7 @@ schema_triples.extend(common_namespace.common_schema_triples)
 schema_triples.extend(crop_namespace.crop_schema_triples)
 schema_triples.extend(place_namespace.place_schema_triples)
 schema_triples.extend(harvest_namespace.harvest_schema_triples)
+schema_triples.extend(production_namespace.production_schema_triples)
 
 def use_ontology(graph):
     # pprint.pprint(schema_triples)

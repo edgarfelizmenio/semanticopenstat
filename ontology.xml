@@ -4,64 +4,89 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#Country">
-    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/Place"/>
-    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/Country"/>
-    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/harvest#harvest_crop">
-    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/harvest#Harvest"/>
-    <rdfs:range rdf:resource="http://kaistwebeng.org/semanticopenstat/crop#Crop"/>
-    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#City">
-    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/City"/>
-    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/harvest#harvest_year">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
-    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/harvest#Harvest"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#Place">
-    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/common#Object"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/crop#Crop">
-    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/common#Object"/>
-    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/Crop"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/harvest#harvest_area">
-    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/harvest#Harvest"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#located_in">
-    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
-    <rdfs:range rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/harvest#has_harvest">
-    <rdfs:range rdf:resource="http://kaistwebeng.org/semanticopenstat/harvest#Harvest"/>
-    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/common#name">
+    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/common#Object"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#Province">
     <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/Province"/>
     <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/common#name">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/common#Object"/>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/production#production_year">
+    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/production#Production"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
     <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#Region">
-    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
-    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/Region"/>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/harvest#harvest_year">
+    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/harvest#Harvest"/>
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#gYear"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/harvest#Harvest">
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#City">
+    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/City"/>
+    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/production#Production">
     <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/common#Object"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#Country">
+    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/Country"/>
+    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
+    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/production#production_crop">
+    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/production#Production"/>
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://kaistwebeng.org/semanticopenstat/crop#Crop"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/common#Object">
     <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#Region">
+    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/Region"/>
+    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/harvest#has_harvest">
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://kaistwebeng.org/semanticopenstat/harvest#Harvest"/>
+    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/production#production_area">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/production#Production"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/harvest#Harvest">
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/common#Object"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#located_in">
+    <rdfs:range rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/harvest#harvest_crop">
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://kaistwebeng.org/semanticopenstat/crop#Crop"/>
+    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/harvest#Harvest"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/place#Place">
+    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/common#Object"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/production#has_production">
+    <rdfs:domain rdf:resource="http://kaistwebeng.org/semanticopenstat/place#Place"/>
+    <rdfs:range rdf:resource="http://kaistwebeng.org/semanticopenstat/production#Production"/>
+    <rdf:Type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://kaistwebeng.org/semanticopenstat/crop#Crop">
+    <ns1:sameAs rdf:resource="http://dbpedia.org/ontology/Crop"/>
+    <rdfs:subClassOf rdf:resource="http://kaistwebeng.org/semanticopenstat/common#Object"/>
   </rdf:Description>
 </rdf:RDF>

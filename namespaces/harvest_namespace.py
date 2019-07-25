@@ -14,7 +14,7 @@ harvestArea = harvestNS['harvest_area']
 harvestCrop = harvestNS['harvest_crop']
 harvestYear = harvestNS['harvest_year']
 
-harvest_schema_triples = [
+schema_triples = [
     # class declarations
     (harvestClass, rdfType, owlClass),
     (harvestClass, rdfsSubClassOf, objectClass),

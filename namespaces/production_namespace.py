@@ -10,11 +10,11 @@ productionClass = productionNS["Production"]
 # define the properties:
 hasProduction = productionNS['has_production']
 
-productionArea = productionNS['production_area']
+productionVolume = productionNS['production_volume']
 productionCrop = productionNS['production_crop']
 productionYear = productionNS['production_year']
 
-production_schema_triples = [
+schema_triples = [
     # class declarations
     (productionClass, rdfType, owlClass),
     (productionClass, rdfsSubClassOf, objectClass),
@@ -23,9 +23,9 @@ production_schema_triples = [
     (hasProduction, rdfsDomain, placeClass),
     (hasProduction, rdfsRange, productionClass),
 
-    (productionArea, rdfType, owlDatatypeProperty),
-    (productionArea, rdfsDomain, productionClass),
-    (productionArea, rdfsRange, xsdDecimal),
+    (productionVolume, rdfType, owlDatatypeProperty),
+    (productionVolume, rdfsDomain, productionClass),
+    (productionVolume, rdfsRange, xsdDecimal),
 
     (productionYear, rdfType, owlDatatypeProperty),
     (productionYear, rdfsDomain, productionClass),

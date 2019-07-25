@@ -7,6 +7,7 @@ from rdflib.namespace import RDF, FOAF, NamespaceManager
 
 from ontology import *
 import rdf_common
+from namespaces import *
 
 TREE_INDENT = '..'
 BLANK = '..'

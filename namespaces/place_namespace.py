@@ -13,7 +13,7 @@ locatedIn = placeNS["located_in"]
 
 # create new relationship for "inside"
 
-place_schema_triples = [
+schema_triples = [
     # class declarations
     (placeClass, rdfsSubClassOf, objectClass),
     (countryClass, rdfsSubClassOf, placeClass),

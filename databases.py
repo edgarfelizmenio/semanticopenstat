@@ -24,6 +24,10 @@ DOMAINS = {
             "file_key": "2E4EVCP1",
             "title": "Other Crops: Volume of Production, by Region and by Province, 1990-2018",
             "parser": "_2E4EVCP1"
+        }, {
+            "file_key": "2E4ENBT0",
+            "title": "Other Crops: Number of Bearing Trees/Hills/Vines, by Region and by Province, 1990-2018",
+            "parser": "_2E4ENBT0"
         }]
     },
 }

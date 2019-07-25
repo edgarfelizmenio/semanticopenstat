@@ -46,7 +46,7 @@ commonNS = Namespace(common_uri + "common#")
 objectClass = commonNS['Object']
 objectName = commonNS['name']
 
-common_schema_triples = [
+schema_triples = [
     (objectClass, rdfType, owlClass),
 
     (commonNS['name'], rdfType, owlDatatypeProperty),

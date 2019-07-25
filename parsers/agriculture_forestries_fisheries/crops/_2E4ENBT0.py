@@ -41,9 +41,9 @@ CROP_CLASS = {
     "type": crop_namespace.cropClass,
 }
 
-PRODUCTION_CLASS = {
-    "source": RESOURCE + "production/{}",
-    "type": production_namespace.productionClass
+BEARING_TREES_CLASS = {
+    "source": RESOURCE + "bearing_trees/{}",
+    "type": bearing_trees_namespace.bearingTreesClass
 }
 
 def build_crop_rdf(crop_names, name_to_uri_table, uri_to_node_table, rdf_graph):
@@ -114,7 +114,7 @@ def build_hierarchy_rdf(place_hierarchy, name_to_uri_table, uri_to_node_table, r
             for child in value.keys():
                 build_hierarchy_rdf({child: place_hierarchy[key][child]}, name_to_uri_table, uri_to_node_table, rdf_graph, depth + 1, parent_instance)
 
-def build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph):
+def build_bearing_trees_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph):
     for i in range(2,len(headers)):
         headers[i] = int(headers[i])
     print(headers)
@@ -126,18 +126,18 @@ def build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_node
         
         for i in range(2, len(headers)):
             year = headers[i]
-            production_volume = trim(line[i])
-            if len(production_volume) > 0:
-                production_volume = float(production_volume)
-                production_instance_name = "{}-{}-production-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year)
-                production_node = URIRef(PRODUCTION_CLASS["source"].format(production_instance_name))
+            bearing_trees_number = trim(line[i])
+            if len(bearing_trees_number) > 0:
+                bearing_trees_number = float(bearing_trees_number)
+                bearing_trees_instance_name = "{}-{}-bearing_trees-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year)
+                bearing_trees_node = URIRef(BEARING_TREES_CLASS["source"].format(bearing_trees_instance_name))
                 
-                rdf_graph.add((production_node, common_namespace.rdfType, PRODUCTION_CLASS["type"]))
-                rdf_graph.add((production_node, production_namespace.productionCrop, crop_node))
-                rdf_graph.add((production_node, production_namespace.productionYear, Literal(year)))
-                rdf_graph.add((production_node, production_namespace.productionVolume, Literal(production_volume)))
-                # rdf_graph.add((production_node, URIRef("unit"), Literal("sq.m.")))
-                rdf_graph.add((place_node, production_namespace.hasProduction, production_node))
+                rdf_graph.add((bearing_trees_node, common_namespace.rdfType, BEARING_TREES_CLASS["type"]))
+                rdf_graph.add((bearing_trees_node, bearing_trees_namespace.bearingTreesCrop, crop_node))
+                rdf_graph.add((bearing_trees_node, bearing_trees_namespace.bearingTreesYear, Literal(year)))
+                rdf_graph.add((bearing_trees_node, bearing_trees_namespace.bearingTreesNumber, Literal(bearing_trees_number)))
+                # rdf_graph.add((bearing_trees_node, URIRef("unit"), Literal("sq.m.")))
+                rdf_graph.add((place_node, bearing_trees_namespace.hasBearingTrees, bearing_trees_node))
 
 def extract(file_key, input_path, output_path, rdf_graph):
     data_file_names = []
@@ -171,7 +171,7 @@ def extract(file_key, input_path, output_path, rdf_graph):
     places_to_uri_table = {}
     places_uri_to_nodes_table = {}
     build_hierarchy_rdf(place_hierarchy, places_to_uri_table, places_uri_to_nodes_table, rdf_graph)
-    build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
+    build_bearing_trees_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
     rdf_common.serialize_rdf_to_file(rdf_graph, os.path.join(output_path, file_key + ".rdf"), "xml")
 
 def main():

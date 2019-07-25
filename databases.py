@@ -28,6 +28,10 @@ DOMAINS = {
             "file_key": "2E4ENBT0",
             "title": "Other Crops: Number of Bearing Trees/Hills/Vines, by Region and by Province, 1990-2018",
             "parser": "_2E4ENBT0"
+        }, {
+            "file_key": "2E4ENVCP",
+            "title": "Palay and Corn: Volume of Production",
+            "parser": "_2E4ENVCP"
         }]
     },
 }

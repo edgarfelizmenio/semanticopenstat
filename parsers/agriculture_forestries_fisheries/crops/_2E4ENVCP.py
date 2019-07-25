@@ -3,36 +3,20 @@ import os
 import pprint
 
 from rdflib import Namespace, Graph, URIRef, Literal, BNode
-from rdflib.namespace import RDF, FOAF, NamespaceManager
 
 from ontology import *
 import rdf_common
 from namespaces import *
 
 TREE_INDENT = '..'
-BLANK = '..'
 
 RESOURCE = common_namespace.common_uri
 DBPEDIA = Namespace('http://dbpedia.org/ontology/')
-OBOLIB = Namespace('http://purl.obolibrary.org/obo/')
-LOCATED_IN = OBOLIB['RO_0001025']
 
 LOCATION_CLASSES = {
     0: {
         "source": RESOURCE + "countries/{}",
         "type": place_namespace.countryClass,
-    },
-    1: {
-        "source": RESOURCE + "regions/{}",
-        "type": place_namespace.regionClass,
-    },
-    2: {
-        "source": RESOURCE + "provinces/{}",
-        "type": place_namespace.provinceClass,
-    },
-    3: {
-        "source": RESOURCE + "cities/{}",
-        "type": place_namespace.cityClass,
     },
 }
 
@@ -118,20 +102,25 @@ def build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_node
     for i in range(2,len(headers)):
         headers[i] = int(headers[i])
     print(headers)
-    for line in lines:
-        crop = line[0]
-        place = trim(line[1])
-        crop_node = crops_uri_to_nodes_table[crops_to_uri_table[line[0]]]
-        place_node = places_uri_to_nodes_table[places_to_uri_table[trim(line[1])]]
+
+    crop_map = {
+        0: "Palay",
+        1: "Corn"
+    }
+
+    for i in range(len(crop_map)):
+        crop = crop_map[i]
+        place = "PHILIPPINES"
+        crop_node = crops_uri_to_nodes_table[crops_to_uri_table[crop]]
+        place_node = places_uri_to_nodes_table[places_to_uri_table[place]]
         
-        for i in range(2, len(headers)):
-            year = headers[i]
-            production_volume = trim(line[i])
+        for j in range(1, len(headers)):
+            year = headers[j]
+            production_volume = trim(lines[i][j])
             if len(production_volume) > 0:
                 production_volume = float(production_volume)
                 production_instance_name = "{}-{}-production-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year)
                 production_node = URIRef(PRODUCTION_CLASS["source"].format(production_instance_name))
-                
                 rdf_graph.add((production_node, common_namespace.rdfType, PRODUCTION_CLASS["type"]))
                 rdf_graph.add((production_node, production_namespace.productionCrop, crop_node))
                 rdf_graph.add((production_node, production_namespace.productionYear, Literal(year)))
@@ -157,20 +146,20 @@ def extract(file_key, input_path, output_path, rdf_graph):
             lines_partial = list(stream)
             lines += lines_partial
 
-    CROPS = list(set([line[0] for line in lines]))
+    CROPS = ["Palay", "Corn"]
     CROPS.sort()
 
     crops_to_uri_table = {}
     crops_uri_to_nodes_table = {}
     build_crop_rdf(CROPS, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
-    places_raw = [line[1] for line in lines]
-
+    
+    places_raw = ["PHILIPPINES"]
     place_hierarchy = {}
     get_place_hierarchy(places_raw, 0, 0, place_hierarchy)
-
     places_to_uri_table = {}
     places_uri_to_nodes_table = {}
     build_hierarchy_rdf(place_hierarchy, places_to_uri_table, places_uri_to_nodes_table, rdf_graph)
+    
     build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
     rdf_common.serialize_rdf_to_file(rdf_graph, os.path.join(output_path, file_key + ".rdf"), "xml")
 
@@ -184,5 +173,7 @@ def main():
     rdf_graph = Graph()
     rdf_graph.namespace_manager.bind("obo", OBOLIB, replace=True)
     use_ontology(rdf_graph)
+
+
 
     rdf_common.serialize_rdf_to_file(rdf_graph, output_filename, "xml")

@@ -115,7 +115,7 @@ def build_fertilizer_use_rdf(headers, lines, places_to_uri_table, places_uri_to_
         headers[i] = int(headers[i])
     print(headers)
 
-    crop = "Palay"
+    crop = "Corn"
     crop_node = crops_uri_to_nodes_table[crops_to_uri_table[crop]]
     for i in range(0, len(lines), 8):
         place = trim(lines[i][0])
@@ -164,7 +164,7 @@ def extract(file_key, input_path, output_path, rdf_graph = None):
             lines_partial = list(stream)
             lines += lines_partial
 
-    CROPS = ["Palay"]
+    CROPS = ["Corn"]
     CROPS.sort()
 
     crops_to_uri_table = {}
@@ -191,7 +191,5 @@ def main():
     rdf_graph = Graph()
     rdf_graph.namespace_manager.bind("obo", OBOLIB, replace=True)
     use_ontology(rdf_graph)
-
-
-
+    
     rdf_common.serialize_rdf_to_file(rdf_graph, output_filename, "xml")

@@ -40,6 +40,10 @@ DOMAINS = {
             "file_key": "2E4EPFU0",
             "title": "Palay: Estimated Inorganic Fertilizer Use by Geolocation, Grade and Year by PHILIPPINES, Area Harvested and Year",
             "parser": "_2E4EPFU0"
+        }, {
+            "file_key": "2E4ECFU0",
+            "title": "Corn: Estimated Inorganic Fertilizer Use by Geolocation, Grade and Year by PHILIPPINES, Area Harvested and Year",
+            "parser": "_2E4ECFU0"
         }]
     },
 }

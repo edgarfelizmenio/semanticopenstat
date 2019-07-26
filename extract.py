@@ -9,7 +9,7 @@ import rdf_common
 # for i in range()
 # i = importlib.import_module("matplotlib.text")
 
-rdf_graph = ConjunctiveGraph()
+# rdf_graph = ConjunctiveGraph()
 
 for domain in databases.DOMAINS.values():
     input_path = domain["directories"]["input_path"]
@@ -21,6 +21,6 @@ for domain in databases.DOMAINS.values():
         print("loading parser ({}) for csv database {}".format(database["parser"], file_key))
         parser_module_path = '.'.join([domain["directories"]["parsers_path"], database["parser"]])
         parser = importlib.import_module(parser_module_path, package=None)
-        parser.extract(file_key, input_path, output_path, rdf_graph)
+        parser.extract(file_key, input_path, output_path)
 
-    rdf_common.serialize_rdf_to_file(rdf_graph, "linked_db.rdf", "xml")
+    # rdf_common.serialize_rdf_to_file(rdf_graph, "linked_db.rdf", "xml")

@@ -128,7 +128,11 @@ def build_harvest_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_t
                 # rdf_graph.add((harvest_node, URIRef("unit"), Literal("sq.m.")))
                 rdf_graph.add((place_node, harvest_namespace.hasHarvest, harvest_node))
 
-def extract(file_key, input_path, output_path, rdf_graph):
+def extract(file_key, input_path, output_path, rdf_graph = None):
+    if rdf_graph is None:
+        rdf_graph = ConjunctiveGraph()
+        use_ontology(rdf_graph)
+
     data_file_names = []
     for data_file_name in os.listdir(input_path):
         if data_file_name.startswith(file_key) and data_file_name.endswith('.csv'):

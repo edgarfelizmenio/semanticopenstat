@@ -36,6 +36,10 @@ DOMAINS = {
             "file_key": "2E4ENAHC",
             "title": "Palay and Corn: Area Harvested by Crop and Year by Crop and Year",
             "parser": "_2E4ENAHC"
+        }, {
+            "file_key": "2E4EPFU0",
+            "title": "Palay: Estimated Inorganic Fertilizer Use by Geolocation, Grade and Year by PHILIPPINES, Area Harvested and Year",
+            "parser": "_2E4EPFU0"
         }]
     },
 }

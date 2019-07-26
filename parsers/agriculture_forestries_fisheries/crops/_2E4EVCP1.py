@@ -139,7 +139,11 @@ def build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_node
                 # rdf_graph.add((production_node, URIRef("unit"), Literal("sq.m.")))
                 rdf_graph.add((place_node, production_namespace.hasProduction, production_node))
 
-def extract(file_key, input_path, output_path, rdf_graph):
+def extract(file_key, input_path, output_path, rdf_graph = None):
+    if rdf_graph is None:
+        rdf_graph = ConjunctiveGraph()
+        use_ontology(rdf_graph)
+
     data_file_names = []
     for data_file_name in os.listdir(input_path):
         if data_file_name.startswith(file_key) and data_file_name.endswith('.csv'):

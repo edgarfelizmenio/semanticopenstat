@@ -5,4 +5,5 @@ __all__ = [
     "harvest_namespace",
     "production_namespace",
     "bearing_trees_namespace",
+    "fertilizer_namespace",
 ]

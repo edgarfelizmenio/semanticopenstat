@@ -9,6 +9,8 @@ import rdf_common
 from namespaces import *
 
 TREE_INDENT = '..'
+BLANK = '..'
+
 
 RESOURCE = common_namespace.common_uri
 DBPEDIA = Namespace('http://dbpedia.org/ontology/')
@@ -18,6 +20,10 @@ LOCATION_CLASSES = {
         "source": RESOURCE + "countries/{}",
         "type": place_namespace.countryClass,
     },
+    1: {
+        "source": RESOURCE + "regions/{}",
+        "type": place_namespace.regionClass,
+    },
 }
 
 CROP_CLASS = {
@@ -25,9 +31,9 @@ CROP_CLASS = {
     "type": crop_namespace.cropClass,
 }
 
-PRODUCTION_CLASS = {
-    "source": RESOURCE + "production/{}",
-    "type": production_namespace.productionClass
+FERTILIZER_CLASS = {
+    "source": RESOURCE + "fertilizers/{}",
+    "type": fertilizer_namespace.fertilizerClass
 }
 
 def build_crop_rdf(crop_names, name_to_uri_table, uri_to_node_table, rdf_graph):
@@ -63,6 +69,7 @@ def get_places(places_raw):
     return places
 
 def get_place_hierarchy(places_raw, i = 0, depth = 0, places = {}):
+    # print(places_raw)
     while i < len(places_raw):
         place_raw = places_raw[i]
         current_depth = get_depth(place_raw)
@@ -76,6 +83,7 @@ def get_place_hierarchy(places_raw, i = 0, depth = 0, places = {}):
             i = get_place_hierarchy(places_raw, i, depth + 1, places[trim(parent)])
         else:
             return i
+    return i
 
 def insert_place_node(name, name_to_uri_table, uri_to_node_table, rdf_graph, depth, parent = None):
     instance_name = LOCATION_CLASSES[depth]["source"].format(name.replace(" ", "_").replace("/","\%2F"))
@@ -98,35 +106,41 @@ def build_hierarchy_rdf(place_hierarchy, name_to_uri_table, uri_to_node_table, r
             for child in value.keys():
                 build_hierarchy_rdf({child: place_hierarchy[key][child]}, name_to_uri_table, uri_to_node_table, rdf_graph, depth + 1, parent_instance)
 
-def build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph):
+def build_fertilizer_use_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph):
+    properties = [fertilizer_namespace.areaApplied, fertilizer_namespace.averageQtyApplied, fertilizer_namespace.ureaQty,
+                fertilizer_namespace.ammosulQty, fertilizer_namespace.ammophosQty, fertilizer_namespace.completeQty,
+                fertilizer_namespace.othersQty, fertilizer_namespace.areaHarvested]
+
     for i in range(2,len(headers)):
         headers[i] = int(headers[i])
     print(headers)
 
-    crop_map = {
-        0: "Palay",
-        1: "Corn"
-    }
-
-    for i in range(len(crop_map)):
-        crop = crop_map[i]
-        place = "PHILIPPINES"
-        crop_node = crops_uri_to_nodes_table[crops_to_uri_table[crop]]
+    crop = "Palay"
+    crop_node = crops_uri_to_nodes_table[crops_to_uri_table[crop]]
+    for i in range(0, len(lines), 8):
+        place = trim(lines[i][0])
         place_node = places_uri_to_nodes_table[places_to_uri_table[place]]
-        
-        for j in range(1, len(headers)):
-            year = headers[j]
-            production_volume = trim(lines[i][j])
-            if len(production_volume) > 0:
-                production_volume = float(production_volume)
-                production_instance_name = "{}-{}-production-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year)
-                production_node = URIRef(PRODUCTION_CLASS["source"].format(production_instance_name))
-                rdf_graph.add((production_node, common_namespace.rdfType, PRODUCTION_CLASS["type"]))
-                rdf_graph.add((production_node, production_namespace.productionCrop, crop_node))
-                rdf_graph.add((production_node, production_namespace.productionYear, Literal(year)))
-                rdf_graph.add((production_node, production_namespace.productionVolume, Literal(production_volume)))
-                # rdf_graph.add((production_node, URIRef("unit"), Literal("sq.m.")))
-                rdf_graph.add((place_node, production_namespace.hasProduction, production_node))
+        for j in range(2, len(headers)):
+            # check if there are blank columns
+            blank_column = True
+            for k in range(len(properties)):
+                value = trim(lines[i + k][j])
+                if len(value) > 0:
+                    blank_column = False
+                    break
+            
+            if not blank_column:
+                year = headers[j]
+                fertilizer_instance_name = "{}-{}-fertilizer-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year)
+                fertilizer_node = URIRef(FERTILIZER_CLASS["source"].format(fertilizer_instance_name))
+                rdf_graph.add((fertilizer_node, common_namespace.rdfType, FERTILIZER_CLASS["type"]))
+                for k in range(len(properties)):
+                    value = trim(lines[i + k][j])
+                    if len(value) > 0:
+                        rdf_graph.add((fertilizer_node, properties[k], Literal(float(value))))
+                rdf_graph.add((fertilizer_node, fertilizer_namespace.yearApplied, Literal(year)))
+                rdf_graph.add((fertilizer_node, fertilizer_namespace.cropApplied, crop_node))
+                rdf_graph.add((place_node, fertilizer_namespace.appliedFertilizer, fertilizer_node))
 
 def extract(file_key, input_path, output_path, rdf_graph = None):
     if rdf_graph is None:
@@ -150,21 +164,24 @@ def extract(file_key, input_path, output_path, rdf_graph = None):
             lines_partial = list(stream)
             lines += lines_partial
 
-    CROPS = ["Palay", "Corn"]
+    CROPS = ["Palay"]
     CROPS.sort()
 
     crops_to_uri_table = {}
     crops_uri_to_nodes_table = {}
     build_crop_rdf(CROPS, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
-    
-    places_raw = ["PHILIPPINES"]
+
+    places_raw = [headers[0]] + list(set(line[0] for line in lines))
     place_hierarchy = {}
     get_place_hierarchy(places_raw, 0, 0, place_hierarchy)
     places_to_uri_table = {}
     places_uri_to_nodes_table = {}
     build_hierarchy_rdf(place_hierarchy, places_to_uri_table, places_uri_to_nodes_table, rdf_graph)
     
-    build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
+    # pprint.pprint(places_to_uri_table)
+    # pprint.pprint(places_uri_to_nodes_table)
+
+    build_fertilizer_use_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
     rdf_common.serialize_rdf_to_file(rdf_graph, os.path.join(output_path, file_key + ".rdf"), "xml")
 
 def main():

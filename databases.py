@@ -48,6 +48,10 @@ DOMAINS = {
             "file_key": "22E4EAHC0",
             "title": "Palay and Corn: Area Harvested by Ecosystem/Croptype, by Quarter, by Semester, by Region and by Province",
             "parser": "_22E4EAHC0"
+        }, {
+            "file_key": "2E4EVCP0",
+            "title": "Palay and Corn: Volume of Production by Ecosystem/Croptype, by Quarter, by Semester, by Region and by Province",
+            "parser": "_2E4EVCP0"
         }]
     },
 }

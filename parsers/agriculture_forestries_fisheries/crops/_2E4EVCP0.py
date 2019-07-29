@@ -41,9 +41,9 @@ CROP_CLASS = {
     "type": crop_namespace.cropClass,
 }
 
-HARVEST_CLASS = {
-    "source": RESOURCE + "harvests/{}",
-    "type": harvest_namespace.harvestClass
+PRODUCTION_CLASS = {
+    "source": RESOURCE + "production/{}",
+    "type": production_namespace.productionClass
 }
 
 def build_crop_rdf(crop_names, name_to_uri_table, uri_to_node_table, rdf_graph):
@@ -114,7 +114,7 @@ def build_hierarchy_rdf(place_hierarchy, name_to_uri_table, uri_to_node_table, r
             for child in value.keys():
                 build_hierarchy_rdf({child: place_hierarchy[key][child]}, name_to_uri_table, uri_to_node_table, rdf_graph, depth + 1, parent_instance)
 
-def build_harvest_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph):
+def build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph):
     print(headers)
     for line in lines:
         crop = line[0]
@@ -131,27 +131,27 @@ def build_harvest_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_t
                 termNumber = int(year[2])
             year = int(year[0])
 
-            harvest_area = trim(line[i])
-            if len(harvest_area) > 0:
-                harvest_area = float(harvest_area)
+            production_volume = trim(line[i])
+            if len(production_volume) > 0:
+                production_volume = float(production_volume)
                 if isTerm:
-                    harvest_instance_name = "{}-{}-harvest-{}-{}-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year, termType.lower(), termNumber)                    
+                    production_instance_name = "{}-{}-production-{}-{}-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year, termType.lower(), termNumber)
                 else:
-                    harvest_instance_name = "{}-{}-harvest-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year)
-                harvest_node = URIRef(HARVEST_CLASS["source"].format(harvest_instance_name))
+                    production_instance_name = "{}-{}-production-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year)
+                production_node = URIRef(PRODUCTION_CLASS["source"].format(production_instance_name))
                 
-                rdf_graph.add((harvest_node, common_namespace.rdfType, HARVEST_CLASS["type"]))
-                rdf_graph.add((harvest_node, harvest_namespace.harvestCrop, crop_node))
-                rdf_graph.add((harvest_node, harvest_namespace.harvestYear, Literal(year)))
+                rdf_graph.add((production_node, common_namespace.rdfType, PRODUCTION_CLASS["type"]))
+                rdf_graph.add((production_node, production_namespace.productionCrop, crop_node))
+                rdf_graph.add((production_node, production_namespace.productionYear, Literal(year)))
                 if isTerm:
                     if termType == 'Quarter':
-                        rdf_graph.add((harvest_node, harvest_namespace.harvestQuarter, Literal(termNumber)))                        
+                        rdf_graph.add((production_node, production_namespace.productionQuarter, Literal(termNumber)))                        
                     elif termType == 'Semester':
-                        rdf_graph.add((harvest_node, harvest_namespace.harvestSemester, Literal(termNumber)))                        
+                        rdf_graph.add((production_node, production_namespace.productionSemester, Literal(termNumber)))                        
 
-                rdf_graph.add((harvest_node, harvest_namespace.harvestArea, Literal(harvest_area)))
-                # rdf_graph.add((harvest_node, URIRef("unit"), Literal("sq.m.")))
-                rdf_graph.add((place_node, harvest_namespace.hasHarvest, harvest_node))
+                rdf_graph.add((production_node, production_namespace.productionVolume, Literal(production_volume)))
+                # rdf_graph.add((production_node, URIRef("unit"), Literal("sq.m.")))
+                rdf_graph.add((place_node, production_namespace.hasProduction, production_node))
 
 def extract(file_key, input_path, output_path, rdf_graph = None):
     if rdf_graph is None:
@@ -189,7 +189,7 @@ def extract(file_key, input_path, output_path, rdf_graph = None):
     places_to_uri_table = {}
     places_uri_to_nodes_table = {}
     build_hierarchy_rdf(place_hierarchy, places_to_uri_table, places_uri_to_nodes_table, rdf_graph)
-    build_harvest_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
+    build_production_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
     rdf_common.serialize_rdf_to_file(rdf_graph, os.path.join(output_path, file_key + ".rdf"), "xml")
 
 def main():
@@ -202,7 +202,5 @@ def main():
     rdf_graph = Graph()
     rdf_graph.namespace_manager.bind("obo", OBOLIB, replace=True)
     use_ontology(rdf_graph)
-
-
 
     rdf_common.serialize_rdf_to_file(rdf_graph, output_filename, "xml")

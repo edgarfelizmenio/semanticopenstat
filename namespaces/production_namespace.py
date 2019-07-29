@@ -14,6 +14,9 @@ productionVolume = productionNS['production_volume']
 productionCrop = productionNS['production_crop']
 productionYear = productionNS['production_year']
 
+productionQuarter = productionNS['production_quarter']
+productionSemester = productionNS['production_semester']
+
 schema_triples = [
     # class declarations
     (productionClass, rdfType, owlClass),
@@ -34,5 +37,14 @@ schema_triples = [
     (productionCrop, rdfType, owlObjectProperty),
     (productionCrop, rdfsDomain, productionClass),
     (productionCrop, rdfsRange, cropClass),
+
+    (productionQuarter, rdfType, owlDatatypeProperty),
+    (productionQuarter, rdfsDomain, productionClass),
+    (productionQuarter, rdfsRange, xsdPositiveInteger),
+
+    (productionSemester, rdfType, owlDatatypeProperty),
+    (productionSemester, rdfsDomain, productionClass),
+    (productionSemester, rdfsRange, xsdPositiveInteger),
+
 
 ]

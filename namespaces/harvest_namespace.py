@@ -14,6 +14,9 @@ harvestArea = harvestNS['harvest_area']
 harvestCrop = harvestNS['harvest_crop']
 harvestYear = harvestNS['harvest_year']
 
+harvestQuarter = harvestNS['harvest_quarter']
+harvestSemester = harvestNS['harveset_semester']
+
 schema_triples = [
     # class declarations
     (harvestClass, rdfType, owlClass),
@@ -34,5 +37,13 @@ schema_triples = [
     (harvestCrop, rdfType, owlObjectProperty),
     (harvestCrop, rdfsDomain, harvestClass),
     (harvestCrop, rdfsRange, cropClass),
+
+    (harvestQuarter, rdfType, owlDatatypeProperty),
+    (harvestQuarter, rdfsDomain, harvestClass),
+    (harvestQuarter, rdfsRange, xsdPositiveInteger),
+
+    (harvestSemester, rdfType, owlDatatypeProperty),
+    (harvestSemester, rdfsDomain, harvestClass),
+    (harvestSemester, rdfsRange, xsdPositiveInteger),
 
 ]

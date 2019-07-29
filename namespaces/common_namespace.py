@@ -23,6 +23,7 @@ xsdNS = Namespace("http://www.w3.org/2001/XMLSchema#")
 xsdString = xsdNS["string"]
 xsdDecimal = xsdNS["decimal"]
 xsdYear = xsdNS["gYear"]
+xsdPositiveInteger = xsdNS["positiveInteger"]
 
 # import third party ontologies for the sameas rule
 dbpediaNS = Namespace("http://dbpedia.org/ontology/")

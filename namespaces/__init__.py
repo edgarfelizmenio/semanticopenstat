@@ -6,4 +6,5 @@ __all__ = [
     "production_namespace",
     "bearing_trees_namespace",
     "fertilizer_namespace",
+    "stock_namespace",
 ]

@@ -13,6 +13,25 @@ TREE_INDENT = '..'
 RESOURCE = common_namespace.common_uri
 DBPEDIA = Namespace('http://dbpedia.org/ontology/')
 
+MONTHS = [
+    "January", 
+    "February", 
+    "March", 
+    "April", 
+    "May", 
+    "June", 
+    "July", 
+    "August",
+    "September", 
+    "October", 
+    "November", 
+    "December"
+]
+
+GMONTHS = {
+    month:"--{:02}".format(i) for month,i in zip(MONTHS, range(1,13))
+}
+
 LOCATION_CLASSES = {
     0: {
         "source": RESOURCE + "countries/{}",
@@ -25,9 +44,9 @@ CROP_CLASS = {
     "type": crop_namespace.cropClass,
 }
 
-HARVEST_CLASS = {
-    "source": RESOURCE + "harvests/{}",
-    "type": harvest_namespace.harvestClass
+STOCK_CLASS = {
+    "source": RESOURCE + "stock/{}",
+    "type": stock_namespace.stockClass
 }
 
 def build_crop_rdf(crop_names, name_to_uri_table, uri_to_node_table, rdf_graph):
@@ -98,35 +117,42 @@ def build_hierarchy_rdf(place_hierarchy, name_to_uri_table, uri_to_node_table, r
             for child in value.keys():
                 build_hierarchy_rdf({child: place_hierarchy[key][child]}, name_to_uri_table, uri_to_node_table, rdf_graph, depth + 1, parent_instance)
 
-def build_harvest_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph):
-    for i in range(2,len(headers)):
-        headers[i] = int(headers[i])
-    print(headers)
-
-    crop_map = {
-        0: "Palay",
-        1: "Corn"
+def build_stock_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph):
+    CROP_MAP = {
+        "Rice": "Palay",
+        "Corn": "Corn"
     }
 
     place = "PHILIPPINES"
-    for i in range(len(crop_map)):
-        crop = crop_map[i]
+    place_node = places_uri_to_nodes_table[places_to_uri_table[place]]
+    for line in lines:
+        crop_sector = line[0].split(": ")
+        year = int(line[1])
+        crop = CROP_MAP[crop_sector[0]]
         crop_node = crops_uri_to_nodes_table[crops_to_uri_table[crop]]
-        place_node = places_uri_to_nodes_table[places_to_uri_table[place]]
-        
-        for j in range(1, len(headers)):
-            year = headers[j]
-            harvest_area = trim(lines[i][j])
-            if len(harvest_area) > 0:
-                harvest_area = float(harvest_area)
-                harvest_instance_name = "{}-{}-harvest-{}".format(place.replace(" ","_"), crop.replace(" ","_").replace("/", "%2F"), year)
-                harvest_node = URIRef(HARVEST_CLASS["source"].format(harvest_instance_name))
-                rdf_graph.add((harvest_node, common_namespace.rdfType, HARVEST_CLASS["type"]))
-                rdf_graph.add((harvest_node, harvest_namespace.harvestCrop, crop_node))
-                rdf_graph.add((harvest_node, harvest_namespace.harvestYear, Literal(year)))
-                rdf_graph.add((harvest_node, harvest_namespace.harvestArea, Literal(harvest_area)))
-                # rdf_graph.add((harvest_node, URIRef("unit"), Literal("sq.m.")))
-                rdf_graph.add((place_node, harvest_namespace.hasHarvest, harvest_node))
+        stock_sector = crop_sector[1]
+        # print(year, crop_node, stock_sector)
+        for i in range(2, len(headers)):
+            stock_amount = trim(line[i])
+            if len(stock_amount) > 0:
+                # insert node
+                stock_amount = float(stock_amount)
+                month = headers[i]
+                stock_instance_name = "{}-{}-stock-{}-{}-{}".format(place.replace(" ", "_"), 
+                                                    crop.replace(" ", "_").replace("/", "%2F"), 
+                                                    stock_sector.replace(" ", "_"),
+                                                    year,
+                                                    month.lower())
+
+                stock_node = URIRef(STOCK_CLASS["source"].format(stock_instance_name))
+                rdf_graph.add((stock_node, common_namespace.rdfType, STOCK_CLASS["type"]))
+                rdf_graph.add((stock_node, stock_namespace.stockCrop, crop_node))
+                rdf_graph.add((stock_node, stock_namespace.stockYear, Literal(year)))
+                rdf_graph.add((stock_node, stock_namespace.stockMonth, Literal(GMONTHS[month])))
+                rdf_graph.add((stock_node, stock_namespace.stockAmount, Literal(stock_amount)))
+                rdf_graph.add((stock_node, stock_namespace.stockSector, Literal(stock_sector)))
+                # rdf_graph.add((stock_node, URIRef("unit"), Literal("sq.m.")))
+                rdf_graph.add((place_node, stock_namespace.hasStock, stock_node))
 
 def extract(file_key, input_path, output_path, rdf_graph = None):
     if rdf_graph is None:
@@ -164,7 +190,7 @@ def extract(file_key, input_path, output_path, rdf_graph = None):
     places_uri_to_nodes_table = {}
     build_hierarchy_rdf(place_hierarchy, places_to_uri_table, places_uri_to_nodes_table, rdf_graph)
     
-    build_harvest_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
+    build_stock_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_table, crops_to_uri_table, crops_uri_to_nodes_table, rdf_graph)
     rdf_common.serialize_rdf_to_file(rdf_graph, os.path.join(output_path, file_key + ".rdf"), "xml")
 
 def main():

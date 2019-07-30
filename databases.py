@@ -52,6 +52,10 @@ DOMAINS = {
             "file_key": "2E4EVCP0",
             "title": "Palay and Corn: Volume of Production by Ecosystem/Croptype, by Quarter, by Semester, by Region and by Province",
             "parser": "_2E4EVCP0"
+        }, {
+            "file_key": "2E4ECNV0",
+            "title": "Rice and Corn: Monthly Total Stock Inventory by Sector",
+            "parser": "_2E4ECNV0"
         }]
     },
 }

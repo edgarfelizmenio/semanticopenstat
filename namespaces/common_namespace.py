@@ -17,6 +17,7 @@ rdfsNS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 rdfsSubClassOf = rdfsNS["subClassOf"]
 rdfsDomain = rdfsNS["domain"]
 rdfsRange = rdfsNS["range"]
+rdfsLabel = rdfsNS["label"]
 
 # define XSD URIs
 xsdNS = Namespace("http://www.w3.org/2001/XMLSchema#")

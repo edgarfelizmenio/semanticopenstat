@@ -55,7 +55,7 @@ def build_crop_rdf(crop_names, name_to_uri_table, uri_to_node_table, rdf_graph):
         node = URIRef(instance_name)
         name_to_uri_table[crop_name] = instance_name
         uri_to_node_table[instance_name] = node
-        rdf_graph.add((node, common_namespace.objectName, Literal(crop_name)))
+        rdf_graph.add((node, common_namespace.rdfsLabel, Literal(crop_name)))
         rdf_graph.add((node, common_namespace.rdfType, CROP_CLASS["type"]))
 
 def get_depth(current_place):
@@ -103,7 +103,7 @@ def insert_place_node(name, name_to_uri_table, uri_to_node_table, rdf_graph, dep
     name_to_uri_table[name] = instance_name
     uri_to_node_table[instance_name] = node
 
-    rdf_graph.add((node, common_namespace.objectName, Literal(name)))
+    rdf_graph.add((node, common_namespace.rdfsLabel, Literal(name)))
     rdf_graph.add((node, common_namespace.rdfType, LOCATION_CLASSES[depth]["type"]))
     if parent is not None:
         rdf_graph.add((node, place_namespace.locatedIn, uri_to_node_table[parent]))
@@ -152,7 +152,7 @@ def build_stock_rdf(headers, lines, places_to_uri_table, places_uri_to_nodes_tab
                 rdf_graph.add((stock_node, stock_namespace.stockAmount, Literal(stock_amount)))
                 rdf_graph.add((stock_node, stock_namespace.stockSector, Literal(stock_sector)))
                 # rdf_graph.add((stock_node, URIRef("unit"), Literal("sq.m.")))
-                rdf_graph.add((place_node, stock_namespace.hasStock, stock_node))
+                rdf_graph.add((stock_node, stock_namespace.stockedAt, place_node))
 
 def extract(file_key, input_path, output_path, rdf_graph = None):
     if rdf_graph is None:

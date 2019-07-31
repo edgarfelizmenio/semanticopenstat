@@ -15,7 +15,7 @@ locatedIn = placeNS["located_in"]
 
 schema_triples = [
     # class declarations
-    (placeClass, rdfsSubClassOf, objectClass),
+    # (placeClass, rdfsSubClassOf, objectClass),
     (countryClass, rdfsSubClassOf, placeClass),
     (regionClass, rdfsSubClassOf, placeClass),
     (provinceClass, rdfsSubClassOf, placeClass),

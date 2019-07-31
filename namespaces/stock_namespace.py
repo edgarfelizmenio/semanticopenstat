@@ -8,7 +8,7 @@ stockNS = Namespace(common_uri + "stock#")
 stockClass = stockNS["Stock"]
 
 # define the properties:
-hasStock = stockNS['has_stock']
+stockedAt = stockNS['stocked_at']
 
 stockAmount = stockNS['stock_amount']
 stockCrop = stockNS['stock_crop']
@@ -18,12 +18,12 @@ stockMonth = stockNS['stock_month']
 
 schema_triples = [
     # class declarations
-    (stockClass, rdfType, owlClass),
-    (stockClass, rdfsSubClassOf, objectClass),
+    # (stockClass, rdfType, owlClass),
+    # (stockClass, rdfsSubClassOf, objectClass),
 
-    (hasStock, rdfType, owlObjectProperty),
-    (hasStock, rdfsDomain, placeClass),
-    (hasStock, rdfsRange, stockClass),
+    (stockedAt, rdfType, owlObjectProperty),
+    (stockedAt, rdfsDomain, stockClass),
+    (stockedAt, rdfsRange, placeClass),
 
     (stockAmount, rdfType, owlDatatypeProperty),
     (stockAmount, rdfsDomain, stockClass),

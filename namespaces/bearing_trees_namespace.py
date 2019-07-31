@@ -8,7 +8,7 @@ bearingTreesNS = Namespace(common_uri + "bearing_trees#")
 bearingTreesClass = bearingTreesNS["BearingTrees"]
 
 # define the properties:
-hasBearingTrees = bearingTreesNS['has_bearing_trees']
+treeLocation = bearingTreesNS['tree_location']
 
 bearingTreesNumber = bearingTreesNS['bearing_trees_number']
 bearingTreesCrop = bearingTreesNS['bearing_trees_crop']
@@ -16,12 +16,12 @@ bearingTreesYear = bearingTreesNS['bearing_trees_year']
 
 schema_triples = [
     # class declarations
-    (bearingTreesClass, rdfType, owlClass),
-    (bearingTreesClass, rdfsSubClassOf, objectClass),
+    # (bearingTreesClass, rdfType, owlClass),
+    # (bearingTreesClass, rdfsSubClassOf, objectClass),
 
-    (hasBearingTrees, rdfType, owlObjectProperty),
-    (hasBearingTrees, rdfsDomain, placeClass),
-    (hasBearingTrees, rdfsRange, bearingTreesClass),
+    (treeLocation, rdfType, owlObjectProperty),
+    (treeLocation, rdfsDomain, bearingTreesClass),
+    (treeLocation, rdfsRange, placeClass),
 
     (bearingTreesNumber, rdfType, owlDatatypeProperty),
     (bearingTreesNumber, rdfsDomain, bearingTreesClass),

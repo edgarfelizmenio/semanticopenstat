@@ -8,7 +8,7 @@ harvestNS = Namespace(common_uri + "harvest#")
 harvestClass = harvestNS["Harvest"]
 
 # define the properties:
-hasHarvest = harvestNS['has_harvest']
+harvestedAt = harvestNS['harvested_at']
 
 harvestArea = harvestNS['harvest_area']
 harvestCrop = harvestNS['harvest_crop']
@@ -19,12 +19,12 @@ harvestSemester = harvestNS['harveset_semester']
 
 schema_triples = [
     # class declarations
-    (harvestClass, rdfType, owlClass),
-    (harvestClass, rdfsSubClassOf, objectClass),
+    # (harvestClass, rdfType, owlClass),
+    # (harvestClass, rdfsSubClassOf, objectClass),
 
-    (hasHarvest, rdfType, owlObjectProperty),
-    (hasHarvest, rdfsDomain, placeClass),
-    (hasHarvest, rdfsRange, harvestClass),
+    (harvestedAt, rdfType, owlObjectProperty),
+    (harvestedAt, rdfsDomain, harvestClass),
+    (harvestedAt, rdfsRange, placeClass),
 
     (harvestArea, rdfType, owlDatatypeProperty),
     (harvestArea, rdfsDomain, harvestClass),

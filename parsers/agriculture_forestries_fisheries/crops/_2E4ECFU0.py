@@ -42,7 +42,7 @@ def build_crop_rdf(crop_names, name_to_uri_table, uri_to_node_table, rdf_graph):
         node = URIRef(instance_name)
         name_to_uri_table[crop_name] = instance_name
         uri_to_node_table[instance_name] = node
-        rdf_graph.add((node, common_namespace.objectName, Literal(crop_name)))
+        rdf_graph.add((node, common_namespace.rdfsLabel, Literal(crop_name)))
         rdf_graph.add((node, common_namespace.rdfType, CROP_CLASS["type"]))
 
 def get_depth(current_place):
@@ -92,7 +92,7 @@ def insert_place_node(name, name_to_uri_table, uri_to_node_table, rdf_graph, dep
     name_to_uri_table[name] = instance_name
     uri_to_node_table[instance_name] = node
 
-    rdf_graph.add((node, common_namespace.objectName, Literal(name)))
+    rdf_graph.add((node, common_namespace.rdfsLabel, Literal(name)))
     rdf_graph.add((node, common_namespace.rdfType, LOCATION_CLASSES[depth]["type"]))
     if parent is not None:
         rdf_graph.add((node, place_namespace.locatedIn, uri_to_node_table[parent]))
@@ -140,7 +140,7 @@ def build_fertilizer_use_rdf(headers, lines, places_to_uri_table, places_uri_to_
                         rdf_graph.add((fertilizer_node, properties[k], Literal(float(value))))
                 rdf_graph.add((fertilizer_node, fertilizer_namespace.yearApplied, Literal(year)))
                 rdf_graph.add((fertilizer_node, fertilizer_namespace.cropApplied, crop_node))
-                rdf_graph.add((place_node, fertilizer_namespace.appliedFertilizer, fertilizer_node))
+                rdf_graph.add((fertilizer_node, fertilizer_namespace.appliedAt, place_node))
 
 def extract(file_key, input_path, output_path, rdf_graph = None):
     if rdf_graph is None:

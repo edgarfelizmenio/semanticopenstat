@@ -8,7 +8,7 @@ productionNS = Namespace(common_uri + "production#")
 productionClass = productionNS["Production"]
 
 # define the properties:
-hasProduction = productionNS['has_production']
+producedAt = productionNS['produced_at']
 
 productionVolume = productionNS['production_volume']
 productionCrop = productionNS['production_crop']
@@ -19,12 +19,12 @@ productionSemester = productionNS['production_semester']
 
 schema_triples = [
     # class declarations
-    (productionClass, rdfType, owlClass),
-    (productionClass, rdfsSubClassOf, objectClass),
+    # (productionClass, rdfType, owlClass),
+    # (productionClass, rdfsSubClassOf, objectClass),
 
-    (hasProduction, rdfType, owlObjectProperty),
-    (hasProduction, rdfsDomain, placeClass),
-    (hasProduction, rdfsRange, productionClass),
+    (producedAt, rdfType, owlObjectProperty),
+    (producedAt, rdfsDomain, productionClass),
+    (producedAt, rdfsRange, placeClass),
 
     (productionVolume, rdfType, owlDatatypeProperty),
     (productionVolume, rdfsDomain, productionClass),

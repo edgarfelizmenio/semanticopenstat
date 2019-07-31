@@ -8,7 +8,7 @@ fertilizerNS = Namespace(common_uri + "fertilizer#")
 fertilizerClass = fertilizerNS["Fertilizer"]
 
 # define the properties:
-appliedFertilizer = fertilizerNS['applied_fertilizer']
+appliedAt = fertilizerNS['applied_at']
 areaApplied = fertilizerNS['fertilizer_area'] # literal
 averageQtyApplied = fertilizerNS['average_qty_applied'] # literal
 ureaQty = fertilizerNS['urea_qty'] # literal
@@ -22,12 +22,12 @@ cropApplied = fertilizerNS['crop_applied']
 
 schema_triples = [
     # class declarations
-    (fertilizerClass, rdfType, owlClass),
-    (fertilizerClass, rdfsSubClassOf, objectClass),
+    # (fertilizerClass, rdfType, owlClass),
+    # (fertilizerClass, rdfsSubClassOf, objectClass),
 
-    (appliedFertilizer, rdfType, owlObjectProperty),
-    (appliedFertilizer, rdfsDomain, placeClass),
-    (appliedFertilizer, rdfsRange, fertilizerClass),
+    (appliedAt, rdfType, owlObjectProperty),
+    (appliedAt, rdfsDomain, fertilizerClass),
+    (appliedAt, rdfsRange, placeClass),
 
     (areaApplied, rdfType, owlDatatypeProperty),
     (areaApplied, rdfsDomain, fertilizerClass),

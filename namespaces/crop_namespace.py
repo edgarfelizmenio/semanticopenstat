@@ -7,6 +7,6 @@ cropClass = cropNS["Crop"]
 
 schema_triples = [
     # class declarations
-    (cropClass, rdfsSubClassOf, objectClass),
+    # (cropClass, rdfsSubClassOf, objectClass),
     (cropClass, owlSameAs, dbpediaNS["Crop"]),
 ]

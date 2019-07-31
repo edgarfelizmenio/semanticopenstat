@@ -16,7 +16,7 @@ bearingTreesYear = bearingTreesNS['bearing_trees_year']
 
 schema_triples = [
     # class declarations
-    # (bearingTreesClass, rdfType, owlClass),
+    (bearingTreesClass, rdfType, owlClass),
     # (bearingTreesClass, rdfsSubClassOf, objectClass),
 
     (treeLocation, rdfType, owlObjectProperty),

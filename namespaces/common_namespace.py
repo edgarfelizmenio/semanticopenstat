@@ -50,9 +50,9 @@ objectClass = commonNS['Object']
 objectName = commonNS['name']
 
 schema_triples = [
-    (objectClass, rdfType, owlClass),
+    # (objectClass, rdfType, owlClass),
 
-    (commonNS['name'], rdfType, owlDatatypeProperty),
-    (commonNS['name'], rdfsDomain, objectClass),
-    (commonNS['name'], rdfsRange, xsdString),
+    # (commonNS['name'], rdfType, owlDatatypeProperty),
+    # (commonNS['name'], rdfsDomain, objectClass),
+    # (commonNS['name'], rdfsRange, xsdString),
 ]

@@ -19,7 +19,7 @@ productionSemester = productionNS['production_semester']
 
 schema_triples = [
     # class declarations
-    # (productionClass, rdfType, owlClass),
+    (productionClass, rdfType, owlClass),
     # (productionClass, rdfsSubClassOf, objectClass),
 
     (producedAt, rdfType, owlObjectProperty),

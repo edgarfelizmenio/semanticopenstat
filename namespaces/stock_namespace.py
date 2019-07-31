@@ -18,7 +18,7 @@ stockMonth = stockNS['stock_month']
 
 schema_triples = [
     # class declarations
-    # (stockClass, rdfType, owlClass),
+    (stockClass, rdfType, owlClass),
     # (stockClass, rdfsSubClassOf, objectClass),
 
     (stockedAt, rdfType, owlObjectProperty),

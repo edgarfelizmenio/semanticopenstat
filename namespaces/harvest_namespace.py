@@ -19,7 +19,7 @@ harvestSemester = harvestNS['harveset_semester']
 
 schema_triples = [
     # class declarations
-    # (harvestClass, rdfType, owlClass),
+    (harvestClass, rdfType, owlClass),
     # (harvestClass, rdfsSubClassOf, objectClass),
 
     (harvestedAt, rdfType, owlObjectProperty),

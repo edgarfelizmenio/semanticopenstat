@@ -22,7 +22,7 @@ cropApplied = fertilizerNS['crop_applied']
 
 schema_triples = [
     # class declarations
-    # (fertilizerClass, rdfType, owlClass),
+    (fertilizerClass, rdfType, owlClass),
     # (fertilizerClass, rdfsSubClassOf, objectClass),
 
     (appliedAt, rdfType, owlObjectProperty),

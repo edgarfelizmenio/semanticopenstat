@@ -11,3 +11,7 @@ schema_triples = [
     (cropClass, rdfType, owlClass),
     (cropClass, owlSameAs, dbpediaNS["Crop"]),
 ]
+
+prefixes = [
+    (cropNS, "crop"),
+]

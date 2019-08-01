@@ -1,26 +1,28 @@
 from rdflib import Namespace, Literal
+from rdflib.namespace import RDF as rdfNS, RDFS as rdfsNS, OWL as owlNS, XSD as xsdNS
+
 
 # define the OWL URIs
-owlNS = Namespace("http://www.w3.org/2002/07/owl#")
+# owlNS = Namespace("http://www.w3.org/2002/07/owl#")
 owlClass = owlNS["Class"]
 owlObjectProperty = owlNS["ObjectProperty"]
 owlDatatypeProperty = owlNS["DatatypeProperty"]
 owlSameAs = owlNS["sameAs"]
 
 # define RDF URIs
-rdfNS = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+# rdfNS = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
 rdfProperty = rdfNS["Property"]
-rdfType = rdfNS["Type"]
+rdfType = rdfNS["type"]
 
 # define RDFS URIs
-rdfsNS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
+# rdfsNS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 rdfsSubClassOf = rdfsNS["subClassOf"]
 rdfsDomain = rdfsNS["domain"]
 rdfsRange = rdfsNS["range"]
 rdfsLabel = rdfsNS["label"]
 
 # define XSD URIs
-xsdNS = Namespace("http://www.w3.org/2001/XMLSchema#")
+# xsdNS = Namespace("http://www.w3.org/2001/XMLSchema#")
 xsdString = xsdNS["string"]
 xsdDecimal = xsdNS["decimal"]
 xsdYear = xsdNS["gYear"]
@@ -29,6 +31,12 @@ xsdPositiveInteger = xsdNS["positiveInteger"]
 
 # import third party ontologies for the sameas rule
 dbpediaNS = Namespace("http://dbpedia.org/ontology/")
+dbpediaPrefix = "dbpedia-owl"
+
+prefixes = [
+    (dbpediaNS, "dbpedia-owl"),
+    (owlNS, "owl")
+]
 
 def isSubClassOf(subClass, superClass, graph):
     if subClass == superClass: return True

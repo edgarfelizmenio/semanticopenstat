@@ -47,3 +47,6 @@ schema_triples = [
 
 ]
 
+prefixes = [
+    (stockNS, "stock"),
+]

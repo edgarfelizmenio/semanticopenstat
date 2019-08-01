@@ -70,3 +70,7 @@ schema_triples = [
     (cropApplied, rdfsRange, cropClass),
 
 ]
+
+prefixes = [
+    (fertilizerNS, "fertilizer"),
+]

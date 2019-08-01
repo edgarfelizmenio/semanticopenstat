@@ -2,9 +2,10 @@ import databases
 import os
 import importlib
 
-from rdflib import plugin, ConjunctiveGraph, Literal, URIRef
+from rdflib import plugin, Graph, Literal, URIRef
 from rdflib.store import Store
 import rdf_common
+import ontology
 from namespaces import common_namespace
 
 # import parsers.agriculture_forestries_fisheries.crops.
@@ -14,11 +15,13 @@ from namespaces import common_namespace
 # identifier = URIRef(common_namespace.common_uri)
 # uri = Literal("sqlite://")
 # store = plugin.get("SQLAlchemy", Store)(identifier=identifier)
-# rdf_graph = ConjunctiveGraph(store, identifier=identifier)
+# rdf_graph = Graph(store, identifier=identifier)
 # rdf_graph.open(uri, create=True)
 
 rdf_graph = None
-rdf_graph = ConjunctiveGraph()
+rdf_graph = Graph()
+
+ontology.use_ontology(rdf_graph)
 
 for domain in databases.DOMAINS.values():
     input_path = domain["directories"]["input_path"]

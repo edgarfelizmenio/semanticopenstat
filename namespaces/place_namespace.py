@@ -37,3 +37,7 @@ schema_triples = [
     (locatedIn, rdfsRange, placeClass)
 
 ]
+
+prefixes = [
+    (placeNS, "place"),
+]

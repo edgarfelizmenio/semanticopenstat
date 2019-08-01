@@ -36,3 +36,7 @@ schema_triples = [
     (bearingTreesCrop, rdfsRange, cropClass),
 
 ]
+
+prefixes = [
+    (bearingTreesNS, "trees"),
+]

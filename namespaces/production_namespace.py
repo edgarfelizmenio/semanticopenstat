@@ -48,3 +48,7 @@ schema_triples = [
 
 
 ]
+
+prefixes = [
+    (productionNS, "production"),
+]

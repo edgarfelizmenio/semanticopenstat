@@ -17,23 +17,21 @@ import rdf_common
 namespace_module = "namespaces"
 
 schema_triples = []
+prefixes = []
 print(namespaces.__name__)
 modules = [importlib.import_module("{}.{}".format(namespaces.__name__, module_name)) for module_name in namespaces.__all__]
 for module in modules:
     print("importing {}.schema_triples...".format(module.__name__))
     schema_triples.extend(module.schema_triples)
-
-# schema_triples.extend(common_namespace.common_schema_triples)
-# schema_triples.extend(crop_namespace.crop_schema_triples)
-# schema_triples.extend(place_namespace.place_schema_triples)
-# schema_triples.extend(harvest_namespace.harvest_schema_triples)
-# schema_triples.extend(production_namespace.production_schema_triples)
-# schema_triples.extend(bearing_trees_namespace.)
+    prefixes.extend(module.prefixes)
 
 def use_ontology(graph):
     # pprint.pprint(schema_triples)
     for triple in schema_triples:
         graph.add(triple)
+
+    for namespace, prefix in prefixes:
+            graph.namespace_manager.bind(prefix, namespace, True)
 
 def main():
     owl_graph = ConjunctiveGraph()

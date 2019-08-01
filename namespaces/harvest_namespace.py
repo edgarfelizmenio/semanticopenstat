@@ -47,3 +47,7 @@ schema_triples = [
     (harvestSemester, rdfsRange, xsdPositiveInteger),
 
 ]
+
+prefixes = [
+    (harvestNS, "harvest"),
+]

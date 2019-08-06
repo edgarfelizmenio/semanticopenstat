@@ -31,7 +31,8 @@ def use_ontology(graph):
         graph.add(triple)
 
     for namespace, prefix in prefixes:
-            graph.namespace_manager.bind(prefix, namespace, True)
+        print(namespace, prefix)
+        graph.namespace_manager.bind(prefix, namespace, True)
 
 def main():
     owl_graph = ConjunctiveGraph()

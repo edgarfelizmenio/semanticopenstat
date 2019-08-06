@@ -48,7 +48,7 @@ BEARING_TREES_CLASS = {
 
 def build_crop_rdf(crop_names, name_to_uri_table, uri_to_node_table, rdf_graph):
     for crop_name in crop_names:
-        instance_name = CROP_CLASS["source"].format(crop_name.replace(" ", "_").replace("/","%2F"))
+        instance_name = CROP_CLASS["source"].format(crop_name.replace(", ","_").replace(" ", "_").replace("/","%2F"))
         node = URIRef(instance_name)
         name_to_uri_table[crop_name] = instance_name
         uri_to_node_table[instance_name] = node

@@ -15,7 +15,7 @@ harvestCrop = harvestNS['harvest_crop']
 harvestYear = harvestNS['harvest_year']
 
 harvestQuarter = harvestNS['harvest_quarter']
-harvestSemester = harvestNS['harveset_semester']
+harvestSemester = harvestNS['harvest_semester']
 
 schema_triples = [
     # class declarations
